@@ -10,7 +10,7 @@ class Golf
     end
 
     def hole3(s,n)
-      s.tr('a-z', "#{(97+n).chr}-za-{(96+n).chr}")
+      s.tr('a-z', "#{(97+n).chr}-z")
     end
 
     def hole4(s,f)
@@ -27,12 +27,12 @@ class Golf
 
     def hole7(j)
       s = ->h {
-        Hash === h ? 
+        Hash === h ?
           Hash[
-            h.map do |k, v| 
-              [k.respond_to?(:to_sym) ? k.to_sym : k, s[v]] 
-            end 
-          ] : h 
+            h.map { |k, v|
+              [k.respond_to?(:to_sym) ? k.to_sym : k, s[v]]
+            }
+          ] : h
       }
 
       s[j]
